@@ -1,0 +1,32 @@
+# PHP hatalarını ekranda göstermeyi kapat
+php_flag display_errors off
+php_flag display_startup_errors off
+php_flag log_errors on
+php_value error_log /php_error.log
+
+# Belirli bir klasördeki tüm nesnelerin indirilmesine izin verme
+<FilesMatch "^docs/">
+    ForceType application/octet-stream
+    Header set Content-Disposition attachment
+</FilesMatch>
+
+# Yönlendirme Kuralları
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Ana sayfa (index) yönlendirme
+    RewriteRule ^anasayfa$ index2.php [L]
+
+    # Ana sayfa (index) yönlendirme
+    RewriteRule ^inovasyon$ inovasyon2.php [L]
+
+    # MyDocs yönlendirme
+    RewriteRule ^dosyalarım$ mydocs2.php [L]
+
+    # TestCases yönlendirme
+    RewriteRule ^test-case-dosyaları$ testcases2.php [L]
+
+    # Devices yönlendirme
+    RewriteRule ^arge-cihazları$ devices2.php [L]
+</IfModule>
